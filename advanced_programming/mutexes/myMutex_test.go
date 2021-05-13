@@ -22,6 +22,25 @@ func testFunc1(c int, m *sync.Mutex, wg *sync.WaitGroup) {
 	m.Unlock()
 }
 
+func TestHighContention(t *testing.T) {
+	var m MyMutex
+	var wg sync.WaitGroup
+	counter := 0
+	for i := 0; i < 1000; i++ {
+		wg.Add(1)
+		go func() {
+			for j := 0; j < 1000; j++ {
+				m.lock()
+				counter++
+				m.unlock()
+			}
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	//fmt.Println(counter)
+}
+
 func TestMyMutex(t *testing.T) {
 	//description := "Test the mutex library"
 	mu := MyMutex{}
