@@ -75,26 +75,23 @@ Design of a global service that aggregates metrics from all other services in th
 * Environment Metrics
   * Metrics about the node e.g., CPU, Memory, IO e.t.c
 
-## Scattered thoughts
+## Incomplete thoughts
 
-* instrumentation api
+* Shall we use an instrumentation api
 * Question, how do we monitor the metrics service itself?
-* batching data collection
-* maybe use a resilient queue? Maybe rabbitMQ in its HA form?
-* data collector
-* data aggregator
-* dashboard service
+* How can we batch data collection?
+* Maybe use a resilient queue? Maybe rabbitMQ in its HA form?
 * time series data?
-* replicate & partition data
+* How do we distribute data?
+  * Replication & partition data
 * How do we know the amount of tracing data each service generates?
   * Do we even need to know the amount of data? Or can we just have large stores?
 * Types of metrics to collect
-  * Events 
-  * traces
+  * ~~Events~~
+  * ~~traces~~
   * Metrics
-* Data processor can give a mode to define new metrics
+* Data processor can provide a scripting mode to define new metrics
 * How do we represent metrics? Prometheus uses metrics name, labels, Timestamp, value
-
 
 ## Calculations
 
