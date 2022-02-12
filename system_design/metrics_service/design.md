@@ -75,6 +75,15 @@ Design of a global service that aggregates metrics from all other services in th
 * Environment Metrics
   * Metrics about the node e.g., CPU, Memory, IO e.t.c
 
+## Metrics Representation
+* Model used by prometheus
+ ```
+  Metric name
+  Any number of labels (can be 0), represented as a key-value array
+  Current metric value
+  Optional metric timestamp
+ ```
+
 ## Incomplete thoughts
 
 * Shall we use an instrumentation api
@@ -106,6 +115,11 @@ Design of a global service that aggregates metrics from all other services in th
   ```
   6 nodes x 1kb = 6kb / minute
   6kb x 525600 = 3153600000 bytes/ year = ~4GB / year
+  ```
+* Network
+  ```
+  Bandwidth required
+  6kb/m = 100b/s = 800bps
   ```
 
 * The message queue has to handle 6kb per minute
